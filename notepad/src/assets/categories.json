@@ -1,0 +1,16 @@
+{
+  "categories": [
+      {
+        "id":"1",
+        "name":"Trabalho"
+      },
+      {
+        "id":"2",
+        "name":"Lazer"
+      },
+      {
+        "id":"3",
+        "name":"Dia-a-dia"
+      }
+    ]
+  }
