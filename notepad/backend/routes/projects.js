@@ -1,22 +1,21 @@
 const express = require("express");
 
-const Note = require("../models/notes");
+const Project = require("../models/projects");
 
 const router = express.Router();
 
 router.post("", (req, res, next) => {
-  const note = new Note({
-    project: req.body.project,
-    note: req.body.note,
-    date:req.body.date,
+  const project = new Project({
+    name: req.body.name,
+
 
   });
 
-  note.save().then(createdNote => {
+  project.save().then(createdProject => {
     console.log(req.body)
     res.status(201).json({
-      message: "Note added successfully",
-      noteId: createdNote._id
+      message: "Project added successfully",
+      projectId: createdProject._id
     });
   })
   .catch(err => {
@@ -27,10 +26,10 @@ router.post("", (req, res, next) => {
 });
 
 router.get("", (req, res, next) => {
-  Note.find().then(notes => {
+  Project.find().then(project => {
     res.status(200).json({
-      message: "Notes fetched successfully!",
-      notesObj: notes
+      message: "Projects fetched successfully!",
+      project: project
     });
   });
 });

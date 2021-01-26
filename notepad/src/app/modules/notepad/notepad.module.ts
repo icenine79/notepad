@@ -5,12 +5,13 @@ import { BaseNotepadComponent } from './base-notepad/base-notepad.component';
 import { NotepadRoutingModule } from './notepad-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotesListingComponent } from './notes-listing/notes-listing.component';
 
 
 
 
 @NgModule({
-  declarations: [BaseNotepadComponent],
+  declarations: [BaseNotepadComponent, NotesListingComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

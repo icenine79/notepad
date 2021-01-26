@@ -1,14 +1,16 @@
-import { Notes } from './../models/Notes';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs/internal/Subject';
+import { Project } from '../models/Projects';
 @Injectable({
   providedIn: 'root'
 })
 export class NotepadService {
-  updatedNotes = new Subject<Notes[]>()
-  notes:Notes[]=[];
+  updatedNotes = new Subject<any[]>()
+  notes:any[]=[];
+  projects:Project[]=[];
+  updatedProjects = new Subject<Project[]>()
   constructor(private http: HttpClient) { }
 
   getNotes(){
@@ -17,7 +19,7 @@ export class NotepadService {
     return notesData.notesObj.map(note=>{
       return {
         id: note._id,
-        title: note.title,
+        project: note.project,
         note:note.note,
         date:note.date
       }
@@ -28,20 +30,37 @@ export class NotepadService {
     this.updatedNotes.next([...this.notes])
   })
 }
+getProjects(){
+  this.http.get<{message:string, project:any}>('http://localhost:3000/api/projects')
+  .pipe(map(projectsData=>{
+    return projectsData.project.map(project=>{
+      return{
+        id:project._id,
+        name:project.name
+      }
+    })
+  }))
+  .subscribe(transformedData=>{
+    this.projects=transformedData;
+    this.updatedProjects.next([...this.projects]);
+})
+}
 
 
-
-  submitNotes(note:Notes){
-    this.http.post<{message:string, noteId:string}>('http://localhost:3000/api/notes', note)
+  submitProject(newProject:any){
+    this.http.post<{message:string, projectId:string}>('http://localhost:3000/api/projects', newProject)
     .subscribe(responseData=>{
-      const id = responseData.noteId;
-      note.id = id; //transforma o _id mongo no id front end
-       this.notes.push(note);
-      this.updatedNotes.next([...this.notes])
+      const id = responseData.projectId;
+      newProject.id = id; //transforma o _id mongo no id front end
+       this.projects.push(newProject);
+      this.updatedProjects.next([...this.projects])
       console.log(responseData.message);
     });
   }
   getUpdatedNotesListener(){
     return this.updatedNotes.asObservable();
+  }
+  getUpdatedProjectsListener(){
+    return this.updatedProjects.asObservable();
   }
 }
