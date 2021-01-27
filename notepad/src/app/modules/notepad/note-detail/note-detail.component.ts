@@ -2,6 +2,7 @@ import { NotepadService } from './../services/notepad.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Notes } from '../models/Notes';
 
 @Component({
   selector: 'app-note-detail',
@@ -10,16 +11,15 @@ import { switchMap } from 'rxjs/operators';
 })
 export class NoteDetailComponent implements OnInit {
 id:string;
+notes:Notes[]
   constructor(private route: ActivatedRoute, private notePadService:NotepadService) { }
 
   ngOnInit(): void {
-    this.route.paramMap
-    .pipe(
-      switchMap(params => {
-        this.id = params.get("id");
-        return this.notePadService.getNote(this.id);
-      })
-    )
-  }
+    this.route.data.subscribe(notes=>{
+      this.notes =Array.of(notes).map(n=>n['detail']['note'])
+      console.log(this.notes)
+    })
+    }
 
 }
+

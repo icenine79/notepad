@@ -2,7 +2,7 @@
   <div class="row">
   <div class="col-md-6 offset-md-3">
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <label for="title">Create a new project</label>
+    <label for="title">Create a new project and start creating notes</label>
     <input class="form-control" formControlName="project"/>
 
     <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
@@ -11,7 +11,7 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-<!-- <app-notes-listing [projects]="projects"></app-notes-listing>
- -->  </div>
+    <h1 class="heading">Or create notes from an <a routerLink="/notes-create" >existing project</a></h1>
+  </div>
 </div>
 </div>

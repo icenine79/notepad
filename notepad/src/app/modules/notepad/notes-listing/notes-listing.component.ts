@@ -1,3 +1,4 @@
+import { NoteCreateComponent } from './../note-create/note-create.component';
 import { NotepadService } from './../services/notepad.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,12 +20,7 @@ filteredProjectNotes:Notes[]=[]
   constructor(private fb:FormBuilder, private notepadService: NotepadService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.notesForm=this.fb.group({
-      note:['', Validators.required],
-      project:['', Validators.required],
-      date:[null,Validators.required]
 
-    })
    this.getProjects()
     this.getParams();
     this.getNotes();
@@ -57,11 +53,16 @@ filteredProjectNotes:Notes[]=[]
        this.projectNotes;
        console.log(this.filteredProjectNotes)
     }
-    onSubmit(){
-      this.notepadService.submitNotes(this.notesForm.value)
-      console.log(this.notesForm.value)
-    }
+
    searchProject(event){
      console.log(event)
    }
+
+   delete(note:Notes){
+this.notepadService.deleteNote(note);
+
+}
+
+
+
   }

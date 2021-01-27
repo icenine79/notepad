@@ -5,7 +5,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class HeroResolver implements Resolve<Notes> {
+export class NoteResolver implements Resolve<Notes[]> {
   constructor(private notePadservice: NotepadService) {}
 
   resolve(

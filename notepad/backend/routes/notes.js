@@ -36,5 +36,29 @@ router.get("", (req, res, next) => {
   });
 });
 
+router.get("/:id",(req,res,next)=>{
+  Note.findById(req.params.id).then(note=>{
+   if(note){
+    res.status(200).json({
+      message:"Note found",
+      noteId:note._id,
+      note:note
+    })
+  }else{
+    res.status(404).json({ message: "Note not found!" });
+
+  }
+  })
+})
+
+router.delete("",(req,res,next)=>{
+Note.deleteOne().then(note=>{
+  res.status(200).json({
+    message:"Note deleted",
+    noteId:note._id
+
+  })
+})
+})
 
 module.exports = router;

@@ -17,7 +17,7 @@ export class NotepadService {
 
 
 getNote(id:string){
-  return this.http.get<{message:any, notesObj:any}>('http//:localhost:3000p/ap/notes'+id)
+  return this.http.get<any>('http://localhost:3000/api/notes/'+id)
 }
   getNotes(){
   this.http.get<{message:string, notesObj:any}>('http://localhost:3000/api/notes')
@@ -79,4 +79,17 @@ submitNotes(note:Notes){
   getUpdatedProjectsListener(){
     return this.updatedProjects.asObservable();
   }
+
+  deleteNote(note:Notes){
+    this.http.delete<{message:string, noteId:string}>('http://localhost:3000/api/notes'+note)
+    .subscribe(note=>{
+      const updatedNotes = this.notes.filter(n=>n.note!==note);
+      this.notes=updatedNotes;
+      this.updatedNotes.next([...this.notes]);
+      console.log(note.message)
+    })
+  }
+
+
+
 }

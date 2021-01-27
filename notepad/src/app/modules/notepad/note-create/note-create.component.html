@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 md-3">
+<form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+
+
+  <label>Select a Project</label>
+  <select formControlName="project"
+    class="form-control">
+    <option
+    *ngFor="let p of projects"
+    [value]="p.name">{{ p.name }}</option>
+  </select>
+<!------->
+<label for="notes">Note</label>
+<textarea class="form-control" formControlName="note" type="text" rows="4"></textarea>
+<div class="input-group">
+<mat-form-field appearance="fill">
+  <mat-label>Choose a date</mat-label>
+  <input formControlName="date" matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+</div>
+<button mat-raised-button color="warn">Submit</button>
+</form>
+</div>
+</div>
+</div>

@@ -38,7 +38,7 @@ get project(){return this.projectForm.get('project')}
       name:this.project.value
     }
     this.notePad.submitProject(project)
-this.router.navigate(['/notes-listing']);
+this.router.navigate(['/notes-create']);
   }
 
   searchProject(project:string){

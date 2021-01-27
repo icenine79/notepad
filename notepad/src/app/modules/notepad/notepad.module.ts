@@ -7,12 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotesListingComponent } from './notes-listing/notes-listing.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
+import { NoteCreateComponent } from './note-create/note-create.component';
 
 
 
 
 @NgModule({
-  declarations: [BaseNotepadComponent, NotesListingComponent, NoteDetailComponent],
+  declarations: [BaseNotepadComponent, NotesListingComponent, NoteDetailComponent, NoteCreateComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
