@@ -1,3 +1,4 @@
+import { Notes } from './../models/Notes';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { map } from 'rxjs/operators';
@@ -13,6 +14,11 @@ export class NotepadService {
   updatedProjects = new Subject<Project[]>()
   constructor(private http: HttpClient) { }
 
+
+
+getNote(id:string){
+  return this.http.get<{message:any, notesObj:any}>('http//:localhost:3000p/ap/notes'+id)
+}
   getNotes(){
   this.http.get<{message:string, notesObj:any}>('http://localhost:3000/api/notes')
   .pipe(map(notesData=>{
@@ -45,7 +51,17 @@ getProjects(){
     this.updatedProjects.next([...this.projects]);
 })
 }
-
+submitNotes(note:Notes){
+  this.http.post<{message:string, noteId:any, notes:any}>('http://localhost:3000/api/notes',note)
+  .subscribe(data=>{
+    const id=data.noteId
+    note.id=id
+    this.notes.push(note)
+    this.updatedNotes.next([...this.notes])
+    console.log(data.message)
+    console.log(data.notes)
+  })
+}
 
   submitProject(newProject:any){
     this.http.post<{message:string, projectId:string}>('http://localhost:3000/api/projects', newProject)

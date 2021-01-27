@@ -3,7 +3,7 @@ import { NotepadService } from './../services/notepad.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {  Notes } from '../models/Notes';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-base-notepad',
@@ -15,7 +15,11 @@ projectForm: FormGroup;
 projects: Project[]
 projectName:string;
 filteredNotes:Notes[]
-  constructor(private fb:FormBuilder, private notePad: NotepadService, private route: ActivatedRoute) { }
+  constructor(
+    private fb:FormBuilder,
+    private notePad: NotepadService,
+    private route: ActivatedRoute,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.projectForm=this.fb.group({
@@ -34,6 +38,7 @@ get project(){return this.projectForm.get('project')}
       name:this.project.value
     }
     this.notePad.submitProject(project)
+this.router.navigate(['/notes-listing']);
   }
 
   searchProject(project:string){

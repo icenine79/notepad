@@ -16,7 +16,8 @@ router.post("", (req, res, next) => {
     console.log(req.body)
     res.status(201).json({
       message: "Note added successfully",
-      noteId: createdNote._id
+      noteId: createdNote._id,
+      notes:createdNote.note
     });
   })
   .catch(err => {

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label>Select a Project</label>
       <a
           *ngFor="let p of projects"
@@ -10,9 +10,27 @@
           >
           {{ p.name }}
         </a>
-     <form [formGroup]="notesForm">
+    </div>
+<div class="col-md-4"  *ngFor="let f of filteredProjectNotes">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="../../../../assets/project-image.jpg" alt="Project">
+    <div class="card-body">
+      <h5 class="card-title">{{f.project}}</h5>
+      <p class="card-text">{{f.note}}</p>
+      <a [routerLink]="['/notes-detail', f.id]" class="btn btn-primary">See Notes Details</a>
+    </div>
+  </div>
+</div>
 
 
+     <form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+
+
+        <label>Select a season</label>
+        <select (change)="searchProject($event.target.value)" formControlName="project"
+          class="form-control">
+          <option *ngFor="let p of projects" [value]="p.name">{{ p.name }}</option>
+        </select>
     <!------->
     <label for="notes">Note</label>
     <textarea class="form-control" formControlName="note" type="text" rows="4"></textarea>
@@ -28,20 +46,4 @@
   </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let f of filteredProjectNotes">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{f.project}}</h5>
-              <p class="card-text">{{f.note}}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+

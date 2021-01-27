@@ -5,7 +5,7 @@
     <label for="title">Create a new project</label>
     <input class="form-control" formControlName="project"/>
 
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
   </form>
   </div>
 </div>

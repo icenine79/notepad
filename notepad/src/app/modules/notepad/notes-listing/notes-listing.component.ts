@@ -13,7 +13,7 @@ import { Notes } from '../models/Notes';
 export class NotesListingComponent implements OnInit {
 projects:Project[]
 notesForm:FormGroup;
-name:string;
+project:string;
 projectNotes:Notes[]=[]
 filteredProjectNotes:Notes[]=[]
   constructor(private fb:FormBuilder, private notepadService: NotepadService, private route:ActivatedRoute) { }
@@ -27,11 +27,12 @@ filteredProjectNotes:Notes[]=[]
     })
    this.getProjects()
     this.getParams();
+    this.getNotes();
   }
  getParams(){
   this.route.queryParamMap.subscribe(params=>{
-      this.name= params.get('project');
-      console.log(this.name)
+      this.project= params.get('project');
+      console.log(this.project)
       this.projectsFilter();
     })
   }
@@ -40,7 +41,7 @@ filteredProjectNotes:Notes[]=[]
     this.notepadService.getUpdatedNotesListener()
     .subscribe(notes=>{
       this.projectNotes=this.filteredProjectNotes=notes;
-      console.log(this.projectNotes)
+      console.log(this.filteredProjectNotes)
     })
   }
   getProjects(){
@@ -51,8 +52,16 @@ filteredProjectNotes:Notes[]=[]
     })
   }
      projectsFilter(){
-       this.filteredProjectNotes = (this.name)?
-       this.projectNotes.filter(p=>p.project===this.name):
+       this.filteredProjectNotes = (this.project)?
+       this.projectNotes.filter(p=>p.project===this.project):
        this.projectNotes;
+       console.log(this.filteredProjectNotes)
     }
+    onSubmit(){
+      this.notepadService.submitNotes(this.notesForm.value)
+      console.log(this.notesForm.value)
+    }
+   searchProject(event){
+     console.log(event)
+   }
   }

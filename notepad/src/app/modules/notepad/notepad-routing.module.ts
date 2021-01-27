@@ -6,7 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path:'', component:BaseNotepadComponent},
-  {path:'notes-listing', component:NotesListingComponent}
+  {path:'notes-listing', component:NotesListingComponent},
+  {path:'notes-detail/:id', component:NotesListingComponent}
+
 
 ];
 
