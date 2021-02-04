@@ -81,7 +81,7 @@ submitNotes(note:Notes){
   }
 
   deleteNote(note:Notes){
-    this.http.delete<{message:string, noteId:string}>('http://localhost:3000/api/notes'+note)
+    this.http.delete<{message:string, noteId:string}>('http://localhost:3000/api/notes/'+note)
     .subscribe(note=>{
       const updatedNotes = this.notes.filter(n=>n.note!==note);
       this.notes=updatedNotes;
@@ -89,7 +89,6 @@ submitNotes(note:Notes){
       console.log(note.message)
     })
   }
-
 
 
 }

@@ -27,6 +27,22 @@ router.post("", (req, res, next) => {
   });
 });
 
+router.put("/:id" ,(req, res, next) => {
+  const note = new Note({
+    project: req.body.project,
+    note: req.body.note,
+    date:req.body.date,
+
+  });
+  Note.updateOne({ _id: req.params.id }, note).then(result => {
+    res.status(200).json({ message: "Update successful!" });
+  });
+});
+
+
+
+
+
 router.get("", (req, res, next) => {
   Note.find().then(notes => {
     res.status(200).json({
@@ -51,7 +67,7 @@ router.get("/:id",(req,res,next)=>{
   })
 })
 
-router.delete("",(req,res,next)=>{
+router.delete("/:id",(req,res,next)=>{
 Note.deleteOne().then(note=>{
   res.status(200).json({
     message:"Note deleted",

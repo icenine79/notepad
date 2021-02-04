@@ -5,7 +5,7 @@
 
 
   <label>Select a Project</label>
-  <select formControlName="project"
+  <select (change)="test($event.target.value)" formControlName="project"
     class="form-control">
     <option
     *ngFor="let p of projects"

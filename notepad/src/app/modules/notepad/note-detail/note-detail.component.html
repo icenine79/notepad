@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6" *ngFor="let n of notes">
-      <p class="h1">{{n.title}}</p>
-      <p class="h3">{{n.note}}</p>
-      <p class="h5">{{n.date | date:'short'}}</p>
+      <mat-card class="mat-elevation-z8">
+        <p class="h1">Notes for project {{n.title}}</p>
+
+        <p class="h3">{{n.note}}</p>
+        <p class="h5">{{n.date | date:'short'}}</p>
+        <button mat-raised-button color="primary">Edit note</button>
+      </mat-card>
+
+
 
     </div>
   </div>

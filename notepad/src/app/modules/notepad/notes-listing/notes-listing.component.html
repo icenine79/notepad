@@ -15,15 +15,15 @@
 
     </div>
 <div class="col-md-4"  *ngFor="let f of filteredProjectNotes">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="../../../../assets/project-image.jpg" alt="Project">
-    <div class="card-body">
-      <h5 class="card-title">{{f.project}}</h5>
-      <p class="card-text">{{f.note}}</p>
-      <a [routerLink]="['/notes-detail', f.id]" class="btn btn-primary">See Notes Details</a>
-      <button class="btn btn-danger" (click)="delete(f.note)">Delete</button>
-    </div>
-  </div>
+  <mat-card class="mat-elevation-z8">
+    <p class="h1">Project {{f.project}}</p>
+
+    <p class="h3">{{f.note}}</p>
+    <p class="h5">{{f.date | date:'short'}}</p>
+    <a [routerLink]="['/notes-detail', f.id]" class="btn btn-primary">See more details</a>
+    <button mat-raised-button color="warn" (click)="delete(f.note)">Delete</button>
+</mat-card>
+
 </div>
 
 

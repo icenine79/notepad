@@ -29,7 +29,9 @@ projects:Project[]
     console.log(this.notesForm.value);
     this.router.navigate(['/notes-listing'])
   }
-
+  test(event){
+    console.log(event)
+  }
   getProjects(){
     this.notePadService.getProjects();
     this.notePadService.getUpdatedProjectsListener()

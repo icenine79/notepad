@@ -1,7 +1,6 @@
-import { NoteCreateComponent } from './../note-create/note-create.component';
 import { NotepadService } from './../services/notepad.service';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Project } from '../models/Projects';
 import { ActivatedRoute } from '@angular/router';
 import { Notes } from '../models/Notes';
@@ -20,10 +19,10 @@ filteredProjectNotes:Notes[]=[]
   constructor(private fb:FormBuilder, private notepadService: NotepadService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getNotes();
 
    this.getProjects()
     this.getParams();
-    this.getNotes();
   }
  getParams(){
   this.route.queryParamMap.subscribe(params=>{

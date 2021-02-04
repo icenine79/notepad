@@ -20,6 +20,8 @@ notes:Notes[]
       console.log(this.notes)
     })
     }
+edit(text){
 
+}
 }
 
