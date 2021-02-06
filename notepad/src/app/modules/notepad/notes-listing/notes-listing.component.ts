@@ -58,7 +58,8 @@ filteredProjectNotes:Notes[]=[]
    }
 
    delete(note:Notes){
-this.notepadService.deleteNote(note);
+this.notepadService.deleteNote(note)
+
 
 }
 
