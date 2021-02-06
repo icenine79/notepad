@@ -9,8 +9,11 @@
           class="list-group-item list-group-item-action"
           >
           {{ p.name }}
-          <button (click)=" $event.preventDefault(); $event.stopPropagation(); deleteProject(p)" class="btn btn-danger">Delete</button>
+          <button (click)=" $event.preventDefault(); $event.stopPropagation(); deleteProject(p.id)" class="btn btn-danger">Delete</button>
         </a>
+        <div class="alert alert-success" role="alert" *ngIf="deleteMessage">
+          Project deleted!
+        </div>
         <a routerLink="/notes-create"  class="btn btn-danger">Create Note</a>
         <a routerLink="/notepad"  class="btn btn-danger">Create Project</a>
 

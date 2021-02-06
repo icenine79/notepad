@@ -16,6 +16,7 @@ notesForm:FormGroup;
 project:string;
 projectNotes:Notes[]=[]
 filteredProjectNotes:Notes[]=[]
+deleteMessage:boolean=false;
   constructor(private fb:FormBuilder, private notepadService: NotepadService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -52,17 +53,21 @@ filteredProjectNotes:Notes[]=[]
        this.projectNotes;
        console.log(this.filteredProjectNotes)
     }
-    deleteProject(p){
-      console.log(p)
+    deleteProject(id){
+      if(id){
+     this.notepadService.deleteProject(id)
+     setTimeout(()=> this.deleteMessage = false,2500); // hide the alert after 2.5s
+
+    }
     }
    searchProject(event){
      //console.log(event)
    }
 
-   delete(note:Notes){
-this.notepadService.deleteNote(note)
-.subscribe(data=>{
-  let index= this.projectNotes.indexOf(note);
+   delete(id:any){
+this.notepadService.deleteNote(id)
+ .subscribe(data=>{
+  let index= this.projectNotes.indexOf(id);
   this.projectNotes.splice(index,1);
   console.log(data.message)
 })

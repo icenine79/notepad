@@ -33,6 +33,13 @@ router.get("", (req, res, next) => {
     });
   });
 });
-
+router.delete("/:id",(req,res,next)=>{
+  Project.deleteOne().then(proj=>{
+    res.status(200).json({
+      message: 'Project Deleted!',
+      projectId: proj._id
+    })
+  })
+})
 
 module.exports = router;

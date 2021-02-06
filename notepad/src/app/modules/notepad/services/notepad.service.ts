@@ -79,10 +79,18 @@ submitNotes(note:Notes){
   getUpdatedProjectsListener(){
     return this.updatedProjects.asObservable();
   }
-
-  deleteNote(note:Notes){
-   return this.http.delete<{message:string, noteId:string}>('http://localhost:3000/api/notes/'+note)
-    /* .subscribe(note=>{
+deleteProject(id){
+  this.http.delete<{message:string, projectId:string}>('http://localhost:3000/api/projects/'+ id)
+  .subscribe(p=>{
+    const updatedProjects = this.projects.filter(p=>p.id!=id);
+    this.projects=updatedProjects;
+    this.updatedProjects.next([...this.projects])
+    console.log(p.message)
+  })
+}
+  deleteNote(id:any){
+    return this.http.delete<{message:string, noteId:string}>('http://localhost:3000/api/notes/'+id)
+     /* subscribe(note=>{
       const updatedNotes = this.notes.filter(n=>n.note!==note);
       this.notes=updatedNotes;
       this.updatedNotes.next([...this.notes]);
