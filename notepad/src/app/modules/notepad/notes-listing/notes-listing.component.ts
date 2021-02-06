@@ -52,14 +52,20 @@ filteredProjectNotes:Notes[]=[]
        this.projectNotes;
        console.log(this.filteredProjectNotes)
     }
-
+    deleteProject(p){
+      console.log(p)
+    }
    searchProject(event){
-     console.log(event)
+     //console.log(event)
    }
 
    delete(note:Notes){
 this.notepadService.deleteNote(note)
-
+.subscribe(data=>{
+  let index= this.projectNotes.indexOf(note);
+  this.projectNotes.splice(index,1);
+  console.log(data.message)
+})
 
 }
 
