@@ -4,11 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {  Notes } from '../models/Notes';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Fader, FaderNode } from '../../shared/animations/landing-page';
 
 @Component({
   selector: 'app-base-notepad',
   templateUrl: './base-notepad.component.html',
-  styleUrls: ['./base-notepad.component.css']
+  styleUrls: ['./base-notepad.component.css'],
+  animations:[Fader.animations, FaderNode.animations]
 })
 export class BaseNotepadComponent implements OnInit {
 projectForm: FormGroup;

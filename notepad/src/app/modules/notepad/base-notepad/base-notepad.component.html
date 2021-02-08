@@ -1,17 +1,22 @@
-<div class="container">
+<div class="container-fluid bg">
   <div class="row">
-  <div class="col-md-6 offset-md-3">
+  <div class="col-md-6 offset-md-3 text-center"style="margin-top:50px;">
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <label for="title">Create a new project and start creating notes</label>
-    <input class="form-control" formControlName="project"/>
+    <label for="title"><span class="info" style="color:white">Create a new project and start writing notes</span></label>
+    <input   placeholder="project name" class="form-control" formControlName="project"/>
 
     <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
   </form>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
-    <h1 class="heading">Or create notes from an <a routerLink="/notes-create" >existing project</a></h1>
+  <div class="col-md-6 offset-md-3 text-center">
+    <h1 class="heading"><span class="info">Or create notes from an  </span><a routerLink="/notes-create" >existing project</a></h1>
   </div>
+</div>
+<div class="row">
+<div class="col-md-12 text-center">
+  <h1 @fade class="title ">Notepad</h1>
+</div>
 </div>
 </div>

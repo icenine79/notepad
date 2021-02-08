@@ -1,14 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6" *ngFor="let n of notes">
-      <mat-card class="mat-elevation-z8">
+      <div class="center">
+        <div class="property-card">
+          <a href="#">
+            <div class="property-image">
+              <div class="property-image-title">
+                <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+              </div>
+            </div></a>
+          <div class="property-description">
+            <h5>{{n.project}} </h5>
+            <p>{{n.note}} </p>
+          </div>
+          <a href="#">
+            <div class="property-social-icons">
+              <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- <mat-card class="mat-elevation-z8">
         <p class="h1">Notes for project {{n.title}}</p>
 
         <p class="h3">{{n.note}}</p>
         <p class="h5">{{n.date | date:'short'}}</p>
         <button mat-raised-button color="primary">Edit note</button>
       </mat-card>
-
+ -->
 
 
     </div>

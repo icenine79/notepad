@@ -1,0 +1,25 @@
+.bg {
+  /* The image used */
+  background-image:url(../../../../assets/engeneer.jpg);
+  /* Full height */
+  height: 100vh;
+  /* Center and scale the image nicely */
+   background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #6C5A56;
+  background-blend-mode: multiply;
+}
+.title{
+  font-family: title;
+  font-size:260px;
+  color:white;
+  margin-top:30%;
+}
+.info{
+  font-family: title;
+  font-size: 30px;
+  color:white;
+  margin-top:20px;
+}
