@@ -1,5 +1,45 @@
 <div class="container-fluid bg">
   <div class="row">
+    <div class="col-md-2">
+      <div class="right-menu">
+        <div class="icons">
+        <i class="fas fa-plus-circle  fa-3x"></i>
+      </div>
+      <div class="icons">
+        <i class="fas fa-arrow-alt-circle-up fa-3x"></i>
+      </div>
+      <div class="icons">
+        <i class="fas fa-trash-alt fa-3x"></i>      </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="test">
+      <input class="test2" type="text" class="form-control">
+    </div>
+      <form style="margin-top:8rem;" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <label for="title"><span class="info" style="color:white">Create a new project and start writing notes</span></label>
+        <input   placeholder="project name" class="form-control" formControlName="project"/>
+
+        <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
+      </form>
+
+    </div>
+    <div class="col-md-2">
+      <div class="left-menu">
+        <div class="icons">
+          <i class="fas fa-search fa-3x"></i>
+        </div>
+        <div>
+          <i class="fas fa-caret-square-left fa-3x icon-bottom"></i>        </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- <div class="row">
   <div class="col-md-6 offset-md-3 text-center"style="margin-top:50px;">
     <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
     <label for="title"><span class="info" style="color:white">Create a new project and start writing notes</span></label>
@@ -18,5 +58,5 @@
 <div class="col-md-12 text-center">
   <h1 @fade class="title ">Notepad</h1>
 </div>
-</div>
+</div> -->
 </div>

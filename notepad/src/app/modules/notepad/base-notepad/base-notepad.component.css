@@ -1,9 +1,9 @@
-.bg {
-  /* The image used */
+/* .bg {
+
   background-image:url(../../../../assets/engeneer.jpg);
-  /* Full height */
+
   height: 100vh;
-  /* Center and scale the image nicely */
+
    background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,6 +11,8 @@
   background-color: #6C5A56;
   background-blend-mode: multiply;
 }
+*/
+
 .title{
   font-family: title;
   font-size:260px;
@@ -22,4 +24,52 @@
   font-size: 30px;
   color:white;
   margin-top:20px;
+}
+
+.right-menu{
+  height:100vh;
+  width:100%;
+  position:relative;
+}
+.icons{
+  width:100%;
+  margin-left:4rem;
+  padding-top:10rem;
+  position:relative;
+
+}
+
+input[type="text"] {
+  background: #444;
+  border: 0 none;
+  color: #d7d7d7;
+  width:50px;
+  padding: 6px 15px 6px 35px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+   margin:3px 80px;
+}
+
+input[type="text"]:hover {
+  background:#ccc;
+  color: #6a6f75;
+  padding-left:80px;
+  margin-left:35px;
+  outline: none;
+}
+
+
+.left-menu{
+  position:relative;
+  height:100vh;
+  width:60%;
+  background-color:yellow;
+  overflow:hidden;
+}
+.left-menu:hover{background-color: red;}
+.icon-bottom{
+  bottom: 88px;
+    position: absolute;
+    left: 72px;
 }

@@ -16,6 +16,7 @@ projects:Project[];
 mode:string='create';
 noteId:string;
 note:any;
+imagePreview:string;
   constructor(
     private fb:FormBuilder,
     private notePadService: NotepadService,
@@ -26,7 +27,8 @@ note:any;
     this.notesForm=this.fb.group({
       note:['', Validators.required],
       project:['', Validators.required],
-      date:[null,Validators.required]
+      date:[null,Validators.required],
+      image:[null, Validators.required]
     })
     this.route.paramMap.subscribe((paraMap:ParamMap)=>{
       if(paraMap.has('noteId')){
@@ -49,6 +51,13 @@ note:any;
     })
     this.getProjects();
   }
+//Getters
+get notes(){return this.notesForm.get('note')};
+get project(){return this.notesForm.get('project');}
+get date(){return this.notesForm.get('date')};
+get image(){return this.notesForm.get('image')};
+
+
   onSubmit(){
     if(this.mode==='create'){
       this.notePadService.submitNotes(this.notesForm.value)
@@ -70,5 +79,15 @@ note:any;
     .subscribe(projects=>{
       this.projects=projects;
     })
+  }
+  onImagePick(event:Event){
+    const file = (event.target as HTMLInputElement).files[0];
+    this.notesForm.patchValue({image:file})
+    this.image.updateValueAndValidity();
+   const reader =  new FileReader()
+  reader.onload =()=>{
+    this.imagePreview=reader.result as string;
+   }
+   reader.readAsDataURL(file)
   }
 }

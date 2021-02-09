@@ -3,7 +3,7 @@ const express = require("express");
 const Note = require("../models/notes");
 
 const router = express.Router();
-
+const multer = require('multer');
 router.post("", (req, res, next) => {
   const note = new Note({
     project: req.body.project,
