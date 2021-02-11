@@ -1,4 +1,9 @@
-      <div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-left-menu></app-left-menu>
+    </div>
+    <div class="col-md-8">
       <label>Select a Project</label>
       <a
           *ngFor="let p of projects"
@@ -12,9 +17,6 @@
         <div class="alert alert-success" role="alert" *ngIf="deleteMessage">
           Project deleted!
         </div>
-        <a routerLink="/notes-create"  class="btn btn-danger">Create Note</a>
-        <a routerLink="/notepad"  class="btn btn-danger">Create Project</a>
-
       <div *ngFor="let f of filteredProjectNotes">
         <table class="table">
           <thead class="thead-dark">
@@ -41,20 +43,10 @@
           </tbody>
         </table>
       </div>
+
     </div>
-
-<!-- <mat-card class="mat-elevation-z8">
-    <p class="h1">Project {{f.project}}</p>
-
-    <p class="h3">{{f.note}}</p>
-    <p class="h5">{{f.date | date:'short'}}</p>
-    <a [routerLink]="['/notes-detail', f.id]" class="btn btn-primary">See more details</a>
-    <a [rout  erLink]="['/edit', f.id]" class="btn btn-primary">Edit</a>
-    <button mat-raised-button color="warn" (click)="delete(f.note)">Delete</button>
-</mat-card>
- -->
-
-
-
-
-
+    <div class="col-md-2">
+      <app-right-menu></app-right-menu>
+    </div>
+  </div>
+</div>

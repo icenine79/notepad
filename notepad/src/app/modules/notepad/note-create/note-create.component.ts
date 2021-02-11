@@ -68,7 +68,8 @@ get image(){return this.notesForm.get('image')};
     if(this.mode==='create'){
       this.notePadService.submitNotes(this.notesForm.value)
       console.log(this.notesForm.value);
-      this.isVisible=false
+      this.isVisible=false;
+      this.router.navigate(['/notes-listing']);
        }else{
       this.notePadService.updateNote(
         this.noteId,this.notesForm.value)

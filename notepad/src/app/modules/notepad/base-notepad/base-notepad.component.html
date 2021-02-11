@@ -1,51 +1,25 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2">
-<!-------------------Left Menu---------------------------------------->
+<!-------------------Left Menu----------------------------------------->
       <app-left-menu (addProjectEvent)="receivedEvent($event)"></app-left-menu>
     </div>
     <div class="col-md-8">
-<!-------------------Project create------------------------>
+<!-------------------Project create------------------------------------>
       <form *ngIf="isProjectCreateVisible" style="margin-top:8rem;" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
         <label for="title"><span class="info" style="color:white">Create a new project and start writing notes</span></label>
         <input   placeholder="project name" class="form-control" formControlName="project"/>
 
         <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
+
       </form>
-<!-------------------Note Create--------------------------------------->
-      <app-note-create *ngIf="isNoteCreateVisible" ></app-note-create>
-<!-------------------Note Listing---------------------------------------->
-<!--  <app-notes-listing></app-notes-listing>
- --><!-------------------Right Menu---------------------------------------->
+<!-------------------Note Create---------------------------------------->
+      <app-note-create  *ngIf="isNoteCreateVisible" ></app-note-create>
+
+<!-------------------Right Menu----------------------------------------->
     </div>
     <div class="col-md-2">
     <app-right-menu></app-right-menu>
     </div>
   </div>
-<!--------------------------------------------------------------------->
-
-
-
-
-
-  <!-- <div class="row">
-  <div class="col-md-6 offset-md-3 text-center"style="margin-top:50px;">
-    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <label for="title"><span class="info" style="color:white">Create a new project and start writing notes</span></label>
-    <input   placeholder="project name" class="form-control" formControlName="project"/>
-
-    <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
-  </form>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6 offset-md-3 text-center">
-    <h1 class="heading"><span class="info">Or create notes from an  </span><a routerLink="/notes-create" >existing project</a></h1>
-  </div>
-</div>
-<div class="row">
-<div class="col-md-12 text-center">
-  <h1 @fade class="title ">Notepad</h1>
-</div>
-</div> -->
-</div>
+<!---------------------------------------------------------------------->

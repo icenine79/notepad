@@ -22,6 +22,7 @@ isProjectCreateVisible:boolean=false;
 isNoteListingVisible:boolean=false;
 isNoteCreateVisible:boolean=false;
 visibilityOnSubmit:boolean = false;
+
   constructor(
     private fb:FormBuilder,
     private notePad: NotepadService,
@@ -33,14 +34,15 @@ visibilityOnSubmit:boolean = false;
       project:['', Validators.required],
 
     })
-
   }
 get project(){return this.projectForm.get('project')}
 
 receivedEvent(event){
   this.isProjectCreateVisible=true;
 }
-
+showList(){
+this.isNoteListingVisible!=this.isNoteListingVisible
+}
   onSubmit(){
     const project:Project={
       id:null,

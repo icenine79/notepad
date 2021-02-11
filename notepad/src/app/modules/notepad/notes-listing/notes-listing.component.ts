@@ -1,5 +1,5 @@
 import { NotepadService } from './../services/notepad.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Project } from '../models/Projects';
 import { ActivatedRoute } from '@angular/router';
