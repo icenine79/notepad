@@ -1,11 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 md-3">
-<form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+
+<form [formGroup]="notesForm" (ngSubmit)="onSubmit($event)">
 
 
   <label>Select a Project</label>
-  <select (change)="test($event.target.value)" formControlName="project"
+  <select  formControlName="project"
     class="form-control">
     <option
     *ngFor="let p of projects"
@@ -31,6 +29,4 @@
 </div>
 <button mat-raised-button color="warn">Submit</button>
 </form>
-</div>
-</div>
-</div>
+

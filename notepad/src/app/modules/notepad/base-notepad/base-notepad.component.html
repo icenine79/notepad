@@ -1,39 +1,28 @@
-<div class="container-fluid bg">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-2">
-      <div class="right-menu">
-        <div class="icons">
-        <i class="fas fa-plus-circle  fa-3x"></i>
-      </div>
-      <div class="icons">
-        <i class="fas fa-arrow-alt-circle-up fa-3x"></i>
-      </div>
-      <div class="icons">
-        <i class="fas fa-trash-alt fa-3x"></i>      </div>
-      </div>
+<!-------------------Left Menu---------------------------------------->
+      <app-left-menu (addProjectEvent)="receivedEvent($event)"></app-left-menu>
     </div>
     <div class="col-md-8">
-      <div class="test">
-      <input class="test2" type="text" class="form-control">
-    </div>
-      <form style="margin-top:8rem;" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+<!-------------------Project create------------------------>
+      <form *ngIf="isProjectCreateVisible" style="margin-top:8rem;" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
         <label for="title"><span class="info" style="color:white">Create a new project and start writing notes</span></label>
         <input   placeholder="project name" class="form-control" formControlName="project"/>
 
         <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
       </form>
-
+<!-------------------Note Create--------------------------------------->
+      <app-note-create *ngIf="isNoteCreateVisible"></app-note-create>
+<!-------------------Note Listing---------------------------------------->
+<app-notes-listing *ngIf="isNoteListingVisible"></app-notes-listing>
+<!-------------------Right Menu---------------------------------------->
     </div>
     <div class="col-md-2">
-      <div class="left-menu">
-        <div class="icons">
-          <i class="fas fa-search fa-3x"></i>
-        </div>
-        <div>
-          <i class="fas fa-caret-square-left fa-3x icon-bottom"></i>        </div>
-        </div>
+    <app-right-menu></app-right-menu>
     </div>
   </div>
+<!--------------------------------------------------------------------->
 
 
 

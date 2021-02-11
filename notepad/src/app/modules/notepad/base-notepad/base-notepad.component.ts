@@ -13,10 +13,14 @@ import { Fader, FaderNode } from '../../shared/animations/landing-page';
   animations:[Fader.animations, FaderNode.animations]
 })
 export class BaseNotepadComponent implements OnInit {
+
 projectForm: FormGroup;
 projects: Project[]
 projectName:string;
-filteredNotes:Notes[]
+filteredNotes:Notes[];
+isProjectCreateVisible:boolean=false;
+isNoteListingVisible:boolean=false;
+isNoteCreateVisible:boolean=false;
   constructor(
     private fb:FormBuilder,
     private notePad: NotepadService,
@@ -32,15 +36,19 @@ filteredNotes:Notes[]
   }
 get project(){return this.projectForm.get('project')}
 
-
-
+receivedEvent(event){
+  this.isProjectCreateVisible=true;
+}
+createdNoteEvent(event){
+}
   onSubmit(){
     const project:Project={
       id:null,
       name:this.project.value
     }
     this.notePad.submitProject(project)
-this.router.navigate(['/notes-create']);
+    this.isNoteCreateVisible=true;
+    this.isProjectCreateVisible=false;
   }
 
   searchProject(project:string){

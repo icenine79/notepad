@@ -1,6 +1,4 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4">
+      <div>
       <label>Select a Project</label>
       <a
           *ngFor="let p of projects"
@@ -17,10 +15,7 @@
         <a routerLink="/notes-create"  class="btn btn-danger">Create Note</a>
         <a routerLink="/notepad"  class="btn btn-danger">Create Project</a>
 
-    </div>
-  </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3" *ngFor="let f of filteredProjectNotes">
+      <div *ngFor="let f of filteredProjectNotes">
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -47,7 +42,6 @@
         </table>
       </div>
     </div>
-
 
 <!-- <mat-card class="mat-elevation-z8">
     <p class="h1">Project {{f.project}}</p>

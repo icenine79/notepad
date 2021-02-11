@@ -9,8 +9,8 @@ const notepad = ()=> import('./modules/notepad/notepad.module').then(n=>n.Notepa
 const routes: Routes = [
   {path:'', component:ShellComponent,
 children:[
-  {path:'notepad', loadChildren:notepad},
-  {path:'', redirectTo:'notepad', pathMatch:'full'}
+  {path:'home', loadChildren:notepad},
+  {path:'', redirectTo:'home', pathMatch:'full'}
 ]},
 {path:'login', component:LoginComponent},
 {path:'register', component:RegisterComponent},

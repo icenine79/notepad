@@ -8,12 +8,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotesListingComponent } from './notes-listing/notes-listing.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { NoteCreateComponent } from './note-create/note-create.component';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { RightMenuComponent } from './right-menu/right-menu.component';
 
 
 
 
 @NgModule({
-  declarations: [BaseNotepadComponent, NotesListingComponent, NoteDetailComponent, NoteCreateComponent],
+  declarations: [BaseNotepadComponent, NotesListingComponent, NoteDetailComponent, NoteCreateComponent, LeftMenuComponent, RightMenuComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -1,5 +1,5 @@
 import { NotepadService } from './../services/notepad.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Project } from '../models/Projects';
 import { Notes } from '../models/Notes';
@@ -17,6 +17,7 @@ mode:string='create';
 noteId:string;
 note:any;
 imagePreview:string;
+@Output() createdNoteEvent=new EventEmitter<MouseEvent>()
   constructor(
     private fb:FormBuilder,
     private notePadService: NotepadService,
@@ -58,21 +59,19 @@ get date(){return this.notesForm.get('date')};
 get image(){return this.notesForm.get('image')};
 
 
-  onSubmit(){
+  onSubmit(event){
     if(this.mode==='create'){
       this.notePadService.submitNotes(this.notesForm.value)
       console.log(this.notesForm.value);
-      this.router.navigate(['/notes-listing'])
-    }else{
+      this.createdNoteEvent.emit(event)
+       }else{
       this.notePadService.updateNote(
         this.noteId,this.notesForm.value)
-        this.router.navigate(['/notes-listing'])
+       // this.router.navigate(['/notes-listing'])
 
     }
   }
-  test(event){
-    console.log(event)
-  }
+
   getProjects(){
     this.notePadService.getProjects();
     this.notePadService.getUpdatedProjectsListener()
