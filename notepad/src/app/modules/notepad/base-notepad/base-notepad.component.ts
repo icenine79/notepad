@@ -21,6 +21,7 @@ filteredNotes:Notes[];
 isProjectCreateVisible:boolean=false;
 isNoteListingVisible:boolean=false;
 isNoteCreateVisible:boolean=false;
+visibilityOnSubmit:boolean = false;
   constructor(
     private fb:FormBuilder,
     private notePad: NotepadService,

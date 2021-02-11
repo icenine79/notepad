@@ -1,5 +1,5 @@
 import { NotepadService } from './../services/notepad.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnChanges, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Project } from '../models/Projects';
 import { Notes } from '../models/Notes';
@@ -10,20 +10,26 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './note-create.component.html',
   styleUrls: ['./note-create.component.css']
 })
-export class NoteCreateComponent implements OnInit {
+export class NoteCreateComponent implements OnInit, OnChanges {
 notesForm:FormGroup
 projects:Project[];
 mode:string='create';
 noteId:string;
 note:any;
 imagePreview:string;
+isVisible:boolean=true;
   constructor(
     private fb:FormBuilder,
     private notePadService: NotepadService,
     private router: Router,
     private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+
+  ngOnChanges(){
+
+  }
+
+    ngOnInit(): void {
     this.notesForm=this.fb.group({
       note:['', Validators.required],
       project:['', Validators.required],
@@ -62,6 +68,7 @@ get image(){return this.notesForm.get('image')};
     if(this.mode==='create'){
       this.notePadService.submitNotes(this.notesForm.value)
       console.log(this.notesForm.value);
+      this.isVisible=false
        }else{
       this.notePadService.updateNote(
         this.noteId,this.notesForm.value)
