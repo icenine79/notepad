@@ -17,7 +17,6 @@ mode:string='create';
 noteId:string;
 note:any;
 imagePreview:string;
-@Output() createdNoteEvent=new EventEmitter<MouseEvent>()
   constructor(
     private fb:FormBuilder,
     private notePadService: NotepadService,
@@ -63,7 +62,6 @@ get image(){return this.notesForm.get('image')};
     if(this.mode==='create'){
       this.notePadService.submitNotes(this.notesForm.value)
       console.log(this.notesForm.value);
-      this.createdNoteEvent.emit(event)
        }else{
       this.notePadService.updateNote(
         this.noteId,this.notesForm.value)

@@ -39,8 +39,7 @@ get project(){return this.projectForm.get('project')}
 receivedEvent(event){
   this.isProjectCreateVisible=true;
 }
-createdNoteEvent(event){
-}
+
   onSubmit(){
     const project:Project={
       id:null,

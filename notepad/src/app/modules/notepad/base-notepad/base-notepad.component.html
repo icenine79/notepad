@@ -13,10 +13,10 @@
         <button [disabled]="projectForm.invalid" mat-raised-button color="primary" type="submit">Submit</button>
       </form>
 <!-------------------Note Create--------------------------------------->
-      <app-note-create *ngIf="isNoteCreateVisible"></app-note-create>
+      <app-note-create *ngIf="isNoteCreateVisible" ></app-note-create>
 <!-------------------Note Listing---------------------------------------->
-<app-notes-listing *ngIf="isNoteListingVisible"></app-notes-listing>
-<!-------------------Right Menu---------------------------------------->
+<!-- <app-notes-listing></app-notes-listing>
+ --><!-------------------Right Menu---------------------------------------->
     </div>
     <div class="col-md-2">
     <app-right-menu></app-right-menu>
